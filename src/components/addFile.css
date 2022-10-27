@@ -1,0 +1,78 @@
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: #150CC6;
+}
+.sideImageDiv{
+    width: 49.9%;
+    height: 945px;
+}
+.userIcon{
+    width: 84%;
+    height: 945px;
+    margin-left: -15%;
+    margin-top: 2%;
+}
+.formContents{
+    width: 50%;
+    height:974px;
+    margin-left: 50%;
+    margin-top: -49.5%;
+    
+}
+.formBox{
+    background: rgba(255, 255, 255, 0.2);
+    width: 30%;
+    height: 70%;
+    position: absolute;
+    top: 7.5%;
+    right:10%;
+    border-radius: 32px;
+}
+.lockIcon{
+    width: 70px;
+    height: 70px;
+    margin-top: 15%;
+}
+.textInput{
+    height: 7%;
+    width: 85%;
+    margin: 7px;
+    border: 2px solid white;
+    background: transparent;
+    border-top:transparent ;
+    border-left: transparent;
+    border-right:transparent ;
+    color: white;
+    font-size: 17px;
+    text-align: center;
+}
+.button{
+    width: 100%;
+    height: 7%;
+    margin-top: 7%;
+    font-size: 17px;
+    font-weight:900;
+}
+.textInput::placeholder{
+    text-align: center;
+    color: white;
+    font-size: 17px;
+}
+.SignUpbutton{
+    text-decoration: none;
+    color: black;
+    background-color:white;
+    padding-left: 43%;
+    padding-right: 43%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    text-align: center;
+    position: relative;
+    top: 10%;
+    
+}
+.hidden{
+    display: none;
+}
+
