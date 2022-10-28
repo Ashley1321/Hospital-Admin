@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from "react";
-import { useLocation, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import '../components/addFile.css';
 import userIcon from '../components/images/user.PNG';
 import lock from '../components/images/lock.PNG';
@@ -13,7 +13,7 @@ function AddFile(){
     const [phoneNumber,setPhoneNumber]= useState('');
     const [physicalAddress,setPhysicalAddress]= useState('');
     const [nextOfKin,setNextOfKin]= useState('');
-    const history = useHistory()
+    // const history = useHistory()
 
     const addPatientRef = collection(db,'patients')
     const [patients,setPatients] = useState([])
@@ -33,7 +33,7 @@ const AddPatient = () =>{
     addDoc(addPatientRef,Patient).then(()=>{
         console.log('patient added');
         alert("successfully added", {type:'successful'});
-        history.push('/admin')
+        // history.push('/admin')
     }).catch((err)=> {
         console.log(err);
         alert('Something went wrong', {type:"error"})

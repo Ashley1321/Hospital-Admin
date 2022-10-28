@@ -1,50 +1,97 @@
 import '../components/admin.css';
 import { Link } from 'react-router-dom';
 import admin from '../components/images/admin.png'
-import { useEffect, useState } from 'react';
-import { addDoc, collection,getDocs} from 'firebase/firestore';
-import { db, storage } from '../components/config/firebase.js';
-import patientPic from '../components/images/patient.PNG'
 
 function Admin(){
 
+    const patientInfo=[
+        {
+            idno:"982900980219",
+            fullName:"Thabo Mphela",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Severe"
 
-    const [patients,setPatients] = useState([])
+        },
+        {
+            idno:"002900980219",
+            fullName:"Katlego Moila",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Moderate",
 
-    const patientsRef = collection(db,'patients')
+        },
+        {
+            idno:"832900980219",
+            fullName:"Joseph Laka",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Severe"
 
-    const getPatients = async () => {
-        const data = await getDocs(patientsRef)
+        },
+        {
+            idno:"232902340212",
+            fullName:"Thapelo Seimela",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Moderate"
 
-        console.log(data.docs.map((results) => (results.data())))
-        setPatients(data.docs.map((results) => ({ ...results.data(), id: results.id })))
-    }
+        },
+        {
+            idno:"686590980233",
+            fullName:"Kagiso Ledwaba",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Mild"
 
-    useEffect(()=> {
-        getPatients()
-    },[])
+        },
+        {
+            idno:"012900980344",
+            fullName:"John Malebana",
+            address:"321 zone 1,"+
+             "seshego"
+             +"0751"
+             ,
+            Notes:"",
+            condition:"Mild"
 
+        },
+        
+ 
+    
+    ]
     return(
         <div className="container">
             <div className='profileDiv'>
                 <div className='imageBorder'>
                  <img src={admin} className='adminIMG'/>
                 </div>
-                <h3 style={{position:'absolute',top:"30%",left:'41%',color:"white"}}>Admin Name</h3>
+                <h3 style={{position:'absolute',top:"29%",left:'40%',color:"white"}}>Admin Name</h3>
             </div>
             <div className='mainContents'>
                 <input type='text' placeholder='Search Patient' className='searchBar'/>
                 <div className='patientsDiv'>
                     <div className='scroll'>
                     {
-                        patients.map((patient,index)=>(
+                        patientInfo.map((patient,index)=>(
                             <div className='patientInfo' key={index}>
-                                <img src={patientPic} className='patientPic'></img>
-                                <h3 style={{position:'relative',top:'-95%',left:'-20rem'}}>{patient.fullNames}</h3>
-                                <h3 style={{position:'relative',top:'-159%',left:'-5rem'}}>{patient.id}</h3>
-                                <h3  style={{position:'relative',top:'-10rem',left:'7rem'}}>{patient.phoneNumber}</h3>
+                                <h2>{patient.fullName}{patient.idno}{patient.condition}</h2>
                             </div>
-                            
                             
                         ))
                     }
