@@ -19,14 +19,14 @@ function Register(){
             </div>
             <div className="formContents">
                 <div className="formBox">
-                    {/* <img src={lock} className='lockIcon'/><br></br><br></br> */}
-                    <input type='file' className='profile pic'/>
+                    <img src={lock} className='lockIcon'/><br></br><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setAdminID(e.target.value)} placeholder="Admin ID no"/><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setFullName(e.target.value)} placeholder="Full Names"/><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address"/><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setPassword(e.target.value)} placeholder="Password"/><br></br>
-                    <Link to='/signIn' style={{color:"white",position:"relative",top:'1%'}}>Already Has Account?</Link>
-                    <button className="button" placeholder="">Sign Up</button>
+                    <input type='file' className='profile pic' style={{marginLeft:'5%'}}/>
+                    <Link to='/signIn' style={{color:"white",position:"relative",top:'4%',left:'-28%'}}>Already Has Account?</Link>
+                    <button className="button" style={{marginTop:'15%'}}>Sign Up</button>
                 </div>
 
             </div>

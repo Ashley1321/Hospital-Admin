@@ -13,7 +13,7 @@ function Navigation(){
                 <Switch>
                     <Route path='/forgotPassword' component={ResetPassword}></Route>
                     <Route path='/addFile' component={AddFile}></Route>
-                    <Route path='/register' component={Register}></Route>
+                    <Route path='/registerAccount' component={Register}></Route>
                     <Route path='/admin' component={Admin}></Route>
                     <Route path='/' component={SignIn}></Route>
                 </Switch>
