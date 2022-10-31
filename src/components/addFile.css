@@ -5,25 +5,24 @@
 }
 .sideImageDiv{
     width: 49.9%;
-    height: 945px;
+    height: 100vh;
 }
 .userIcon{
     width: 84%;
-    height: 945px;
+    height: 90%;
     margin-left: -15%;
     margin-top: 2%;
 }
 .formContents{
     width: 50%;
-    height:974px;
+    height:110%;
     margin-left: 50%;
-    margin-top: -49.5%;
-    
+    margin-top: -49.5%; 
 }
 .formBox{
     background: rgba(255, 255, 255, 0.2);
     width: 30%;
-    height: 70%;
+    height: 78%;
     position: absolute;
     top: 7.5%;
     right:10%;
@@ -70,8 +69,5 @@
     text-align: center;
     position: relative;
     top: 10%;
-    
-}
-.profile-pic{
     
 }

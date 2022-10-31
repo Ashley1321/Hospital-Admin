@@ -12,10 +12,10 @@ function Navigation(){
             <Router>
                 <Switch>
                     <Route path='/forgotPassword' component={ResetPassword}></Route>
-                    <Route path='/' component={AddFile}></Route>
+                    <Route path='/addFile' component={AddFile}></Route>
                     <Route path='/register' component={Register}></Route>
                     <Route path='/admin' component={Admin}></Route>
-                    <Route path='/signIn' component={SignIn}></Route>
+                    <Route path='/' component={SignIn}></Route>
                 </Switch>
             </Router>
 

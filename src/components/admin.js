@@ -1,97 +1,71 @@
 import '../components/admin.css';
 import { Link } from 'react-router-dom';
 import admin from '../components/images/admin.png'
+import { useEffect, useState } from 'react';
+import { addDoc, collection,getDocs} from 'firebase/firestore';
+import { db, storage } from '../components/config/firebase.js';
+import patientPic from '../components/images/patient.PNG'
 
 function Admin(){
 
-    const patientInfo=[
-        {
-            idno:"982900980219",
-            fullName:"Thabo Mphela",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Severe"
 
-        },
-        {
-            idno:"002900980219",
-            fullName:"Katlego Moila",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Moderate",
+    const [patients,setPatients] = useState([])
+    const [adminInfo,setData] = useState([])
+    const addAdminRef = collection(db,'adminDetails')
 
-        },
-        {
-            idno:"832900980219",
-            fullName:"Joseph Laka",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Severe"
+    const patientsRef = collection(db,'patients')
 
-        },
-        {
-            idno:"232902340212",
-            fullName:"Thapelo Seimela",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Moderate"
+    const getPatients = async () => {
+        const data = await getDocs(patientsRef)
 
-        },
-        {
-            idno:"686590980233",
-            fullName:"Kagiso Ledwaba",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Mild"
+        console.log(data.docs.map((results) => (results.data())))
+        setPatients(data.docs.map((results) => ({ ...results.data(), id: results.id })))
+    }
 
-        },
-        {
-            idno:"012900980344",
-            fullName:"John Malebana",
-            address:"321 zone 1,"+
-             "seshego"
-             +"0751"
-             ,
-            Notes:"",
-            condition:"Mild"
+    useEffect(()=> {
+        getPatients()
+    },[])
 
-        },
-        
- 
-    
-    ]
+    const getAdminInfo = async () => {
+        const info = await getDocs( addAdminRef)
+
+        console.log(info.docs.map((results)=>(results.data())))
+  setData(info.docs.map((results)=>({...results.data(),id:results.id})));
+    }
+
+    useEffect(()=>{
+        getAdminInfo() 
+    },[])
+
     return(
         <div className="container">
             <div className='profileDiv'>
-                <div className='imageBorder'>
-                 <img src={admin} className='adminIMG'/>
-                </div>
-                <h3 style={{position:'absolute',top:"29%",left:'40%',color:"white"}}>Admin Name</h3>
+               
+                {
+                    adminInfo.map((user,index)=>(
+                        <>
+                            <div className='imageBorder' >
+                                <img src={user.image} className='adminIMG' />
+                            </div>
+                            <h2 className='adminName' key={index}>{user.fullName}</h2>
+                        </>
+                        
+                    ))
+                }
             </div>
             <div className='mainContents'>
                 <input type='text' placeholder='Search Patient' className='searchBar'/>
                 <div className='patientsDiv'>
                     <div className='scroll'>
                     {
-                        patientInfo.map((patient,index)=>(
+                        patients.map((patient,index)=>(
                             <div className='patientInfo' key={index}>
-                                <h2>{patient.fullName}{patient.idno}{patient.condition}</h2>
+                                <img src={patientPic} className='patientPic'></img>
+                                <h3 style={{position:'relative',top:'-95%',left:'-13rem'}}>{patient.fullName}</h3>
+                                <h3 style={{position:'relative',top:'-159%',left:'8rem'}}>{patient.id}</h3>
+                                <h3  style={{position:'relative',top:'-9.5rem',right:'4rem'}}>{patient.phoneNumber}</h3>
                             </div>
+                            
                             
                         ))
                     }

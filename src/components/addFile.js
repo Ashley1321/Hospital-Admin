@@ -17,17 +17,23 @@ function AddFile(){
 
     const addPatientRef = collection(db,'patients')
     const [patients,setPatients] = useState([])
-
+    let today = new Date();
+    const [notes,setNotes]=useState("");
+    const [condition,setCondition]=useState("");
     const collectionRef = collection(db,'patients');
+    
 
 const AddPatient = () =>{
 
     const Patient ={
-        id:id,
-        fullNames:fullNames,
+        idno:id,
+        fullName:fullNames,
         phoneNumber:phoneNumber,
         physicalAddress:physicalAddress,
-        nextOfKin:nextOfKin
+        nextOfKin:nextOfKin,
+        notes:notes,
+        condition:condition,
+        date:today.toString().substring(0,15)
     };
 
     addDoc(addPatientRef,Patient).then(()=>{
@@ -67,8 +73,16 @@ const AddPatient = () =>{
                     <input type='text' className="textInput" onChange={(e)=>setFullName(e.target.value)} placeholder="Full Names"/><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setPhoneNumber(e.target.value)} placeholder="Phone Number"/><br></br>
                     <input type='text' className="textInput" onChange={(e)=>setPhysicalAddress(e.target.value)} placeholder="Physical Address"/><br></br>
-                    <input type='text' className="textInput" onChange={(e)=>setNextOfKin(e.target.value)} placeholder="Next Of Kin"/><br></br>
-                    <button className="button" onClick={(e)=>{AddPatient()}}>Create File</button>
+                    <p>Condition: </p>
+                    <select style={{width:"80%",height:35,background: "rgba(255, 255, 255, 0.2)",border:"none",borderRadius:5}} placeholder="Condition" onChange={(e)=>setCondition(e.target.value)}>
+                    <option value="Mild">Mild</option>
+                    <option value="Moderate">Moderate</option>
+                    <option value="Severe">Severe</option>
+                </select>
+                    {/* <input type='text' className="textInput" onChange={(e)=>setCondition(e.target.value)} placeholder="Condition"/><br></br> */}
+                    <input type='text' className="textInput" onChange={(e)=>setNotes(e.target.value)} placeholder="Notes"/><br></br>
+                    {/* <input type='text' className="textInput" onChange={(e)=>setNextOfKin(e.target.value)} placeholder="Next Of Kin"/><br></br> */}
+                     <button className="button" onClick={(e)=>{AddPatient()}}>Create File</button>
                 </div>
 
             </div>
